@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Carga Crítica de Pandeo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Calculadora de Carga Crítica de Pandeo</h1>
+    <p>Ingresa los valores para calcular la carga crítica de pandeo:</p>
+  </header>
+
+  <section class="calculator">
+    <div class="intro-section">
+      <h2>¿Qué es el pandeo?</h2>
+      <p>El pandeo es un fenómeno en el cual una columna delgada, bajo carga axial, tiende a fallar lateralmente debido a inestabilidades estructurales.</p>
+    </div>
+
+    <form id="columna-form">
+      <div class="form-group">
+        <label for="mod-elasticidad">
+          Módulo de Elasticidad E (GPa):
+          <button type="button" class="info-button">?</button>
+          <span class="concepto hidden">
+            Es el módulo de elasticidad del material, que indica su rigidez y capacidad para resistir deformaciones.
+          </span>
+        </label>
+        <input type="number" id="mod-elasticidad" min="0" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label for="momento-inercia">
+          Momento de Inercia I (m<sup>4</sup>):
+          <button type="button" class="info-button">?</button>
+          <span class="concepto hidden">
+            Es una medida de la distribución de masa en la sección transversal de la columna.
+          </span>
+        </label>
+        <input type="number" id="momento-inercia" min="0" step="0.0001" required>
+      </div>
+
+      <div class="form-group">
+        <label for="factor-longitud">
+          Factor de Longitud k:
+          <button type="button" class="info-button">?</button>
+          <span class="concepto hidden">
+            Es un valor que depende de las condiciones de apoyo de la columna, afectando su capacidad de carga crítica.
+          </span>
+        </label>
+        <input type="number" id="factor-longitud" min="0" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label for="longitud-columna">
+          Longitud de la Columna L (m):
+          <button type="button" class="info-button">?</button>
+          <span class="concepto hidden">
+            Es la longitud física de la columna sobre la cual se calcula la carga crítica de pandeo.
+          </span>
+        </label>
+        <input type="number" id="longitud-columna" min="0" step="0.01" required>
+      </div>
+
+      <button type="submit" style="background-color: #007bff;">Calcular Carga Crítica de Pandeo</button>
+    </form>
+
+    <div id="resultado-columna" class="resultado hidden">
+      <h2>Resultado:</h2>
+      <p id="resultado-columna-valor"></p>
+    </div>
+
+    <div class="formula-explicativa">
+      <h3>Fórmula Utilizada:</h3>
+      <p>La carga crítica de pandeo se calcula con la siguiente fórmula:</p>
+      <p class="formula-text">𝑃<sub>cr</sub> = (𝜋<sup>2</sup> * 𝐸 * 𝐼) / (𝑘 * 𝐿)<sup>2</sup></p>
+      <p>Donde:</p>
+      <ul>
+        <li>𝑃<sub>cr</sub>: Carga crítica de pandeo.</li>
+        <li>𝐸: Módulo de elasticidad del material.</li>
+        <li>𝐼: Momento de inercia de la sección transversal.</li>
+        <li>𝑘: Factor de longitud efectiva de la columna.</li>
+        <li>𝐿: Longitud de la columna.</li>
+      </ul>
+      <p>Esta fórmula calcula la carga máxima que puede soportar una columna antes de pandearse.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
